@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dialog',
@@ -6,5 +7,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./dialog.component.scss']
 })
 export class DialogComponent {
+
+  freshnessList = ["Brand New", "Second Hand", "Refurbished"];
+  productForm !: FormGroup;
+
+  constructor(private formBuilder : FormBuilder) { }
+
+  ngOnInit(): void{
+    this.productForm = this.formBuilder.group({
+      productName : ['', Validators.required],
+      category: ['', Validators.required],
+      freshness : ['', Validators.required],
+      price : ['', Validators.required],
+      date : ['', Validators.required]
+    })
+  }
 
 }
