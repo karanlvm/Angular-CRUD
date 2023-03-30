@@ -1,0 +1,23 @@
+{
+  "productList": [
+    {
+      "productName": "Karan",
+      "category": "Vegetables",
+      "freshness": "Brand New",
+      "price": 10,
+      "date": "2023-03-29T18:30:00.000Z",
+      "comment": "Comment",
+      "id": 1
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
