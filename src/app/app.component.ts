@@ -31,8 +31,12 @@ export class AppComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(DialogComponent, {
-      width:'30%'
-    });
+      width:'30%',
+    }).afterClosed().subscribe(val=>{
+      if(val == 'save'){
+        this.getAllProducts();
+      }
+    })
   }
 
   getAllProducts(){
@@ -45,6 +49,30 @@ export class AppComponent implements OnInit {
       },
       error:(err)=>{
         alert("Error while fetching the record")
+      }
+    })
+  }
+
+  editProduct(row : any){
+    this.dialog.open(DialogComponent, {
+      width:'30%',
+      data: row
+    }).afterClosed().subscribe(val=>{
+      if(val=='update'){
+        this.getAllProducts();
+      }
+    })
+  }
+
+  deleteProduct(id:number){
+    this.api.deleteProduct(id)
+    .subscribe({
+      next:(res)=>{
+        alert("Deleted Successfully");
+        this.getAllProducts();
+      },
+      error :()=>{
+        alert("Error while deleting the record");
       }
     })
   }
